@@ -52,7 +52,7 @@ $ pyinstaller main.py
 # --paths — возможность вручную прописать путь к необходимым файлам, если pyinstaller
 # не может их найти(например: --paths D:\python35\Lib\site-packages\PyQt5\Qt\bin)
 
-$ pyinstaller --onefile --icon=../image/apps.ico --paths version.py simplepca-old.py
+$ pyinstaller --onefile --icon=image/apps.ico --paths src/version.py src/simplepca.py
 
 '''
 
