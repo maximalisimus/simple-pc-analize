@@ -42,7 +42,7 @@
 
 В программе автоматически определяется архитекутура **ОС**.
 
-Внутри директории **src** программы обязательно должны присутствовать следующие папки и файлы. Без них программа работать не будет.
+Внутри директории **src** программы обязательно должны присутствовать следующие папки и файлы. Без них программа работать не будет. Скачанные архивы и **exe** файлы для работы не нужны, т.е. их в последствии можно будет удалить.
 
 * ListPrinters ([Git ссылка](https://github.com/maximalisimus/ListPrinters.git))
 * FastPing ([Git ссылка](https://github.com/maximalisimus/FastPing.git))
@@ -52,13 +52,58 @@
 * ping-list.txt
 * structure.txt
 
+<img src="image/scr-1.png" width="500px">
+
 А теперь о каждом пункте отдельно. Начнем с конца.
 
 **structure.txt** - Вы можете не использовать структурирование файлов журнала по структуре организации, но файл в папке с программой обязательно должен присутствовать. 
 
 **ping-list.txt** - то же самое касательно пингов различных веб адресов. Пинги можно отключить соответствующим ключом, или просто оставить в файле буквально 1...2 строчки. Однако, файл обязательно должен присутствовать.
 
-<img src="image/BorlandCpp.png" width="100"><img src="image/printers_icon.ico"> **ListPrinters** - отдельная программа написанная на **C++Buileder**-ре <img src="image/cpp-builder-icon.svg">.
+<img src="image/BorlandCpp.png" height="32"> <img src="image/printers_icon.ico" height="32"> **ListPrinters** - отдельная программа написанная на **C++Buileder**-ре <img src="image/cpp-builder-icon.svg">.
+ 
+ Компилировать её не нужно. Написана мною. Просто скачайте последнюю [Relese версию](https://github.com/maximalisimus/ListPrinters/releases/download/v1.0.0.0/ListPrinters-win-x86.exe) в папку **src**. Не нужно создавать никаких директорий. Данный *exe* является архивом, который упакован *7z* как *sfx* архив. Внутри уже имеются все необходимые файлы и папки для работы программы. 
+ 
+ Поэтому просто запустите его внутри **src** папки и распакуйте.
+ 
+ <img src="image/scr-3.png" width="500px">
+ 
+ <img src="image/BorlandCpp.png" height="32"> <img src="image/icmp-icon.ico" height="32"> **FastPing** - также отдельная программа написанная на **C++Buileder**-ре <img src="image/cpp-builder-icon.svg">.
+
+ Компилировать её не нужно. Написана тоже мною. Просто скачайте последнюю [Relese версию](https://github.com/maximalisimus/FastPing/releases/download/v1.0.0.0/FastPing-win-x86.exe) в папку **src**. Не нужно создавать никаких директорий. Данный *exe* является архивом, который упакован *7z* как *sfx* архив. Внутри уже имеются все необходимые файлы и папки для работы программы. 
+ 
+ Поэтому просто запустите его внутри **src** папки и распакуйте.
+
+<img src="image/scr-2.png" width="500px">
+
+**udefrag-x64** и **udefrag-x86** являются частью утилиты **UltraDefrag Files**.  Эту портативную версию утилиты в зависимости от архитектуры можно скачать с сайта *SorceForge.Net*. Однако, вся утилита не нужна. 
+
+В списке выше указана ссылка на все версии утитилы, чтобы можно было выбрать последнюю. На данный момент последней является версия **7.1.4**.
+
+Скачать необходимо 2 архива:
+* с окончанием *bin.i386.zip*, например [этот](https://sourceforge.net/projects/ultradefrag/files/stable-release/7.1.4/ultradefrag-portable-7.1.4.bin.i386.zip/download)
+* и с окончанием *bin.amd64.zip*, например [этот](https://sourceforge.net/projects/ultradefrag/files/stable-release/7.1.4/ultradefrag-portable-7.1.4.bin.amd64.zip/download)
+
+Далее, в папке *src* создайте 2 директории - *udefrag-x64* и *udefrag-x86*. После этого распакуйте файлы программы *Ultra defrag* в эти папки по архитектурам. Нужны не все файы. 
+
+Вот список необходимых файлов любого архива:
+* conf
+* po
+* scripts
+* lua5.1a.dll
+* lua5.1a.exe
+* lua5.1a_gui.exe
+* udefrag.dll
+* udefrag.exe
+* zenwinx.dll
+
+Папка **reports** создаётся автоматически в процессе работы.
+
+<img src="image/scr-4.png" width="500px">
+
+<img src="image/scr-5.png" width="500px">
+
+**smartmontools** - 
 
 ---
 
