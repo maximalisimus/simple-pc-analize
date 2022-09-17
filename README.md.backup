@@ -52,7 +52,7 @@
 * ping-list.txt
 * structure.txt
 
-<img src="image/scr-1.png" width="500px">
+<img src="image/scr-1.png" width="800px">
 
 А теперь о каждом пункте отдельно. Начнем с конца.
 
@@ -66,7 +66,7 @@
  
  Поэтому просто запустите его внутри **src** папки и распакуйте.
  
- <img src="image/scr-3.png" width="500px">
+ <img src="image/scr-3.png" width="800px">
  
  <img src="image/BorlandCpp.png" height="32"> <img src="image/icmp-icon.ico" height="32"> **FastPing** - также отдельная программа написанная на **C++Buileder**-ре <img src="image/cpp-builder-icon.svg">.
 
@@ -74,7 +74,7 @@
  
  Поэтому просто запустите его внутри **src** папки и распакуйте.
 
-<img src="image/scr-2.png" width="500px">
+<img src="image/scr-2.png" width="800px">
 
 **udefrag-x64** и **udefrag-x86** являются частью утилиты **UltraDefrag Files**.  Эту портативную версию утилиты в зависимости от архитектуры можно скачать с сайта *SorceForge.Net*. Однако, вся утилита не нужна. 
 
@@ -99,9 +99,9 @@
 
 Папка **reports** создаётся автоматически в процессе работы.
 
-<img src="image/scr-4.png" width="500px">
+<img src="image/scr-4.png" width="800px">
 
-<img src="image/scr-5.png" width="500px">
+<img src="image/scr-5.png" width="800px">
 
 **smartmontools** - 
 
