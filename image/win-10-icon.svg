@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg 
+	width="130" 
+	height="30" 
+	viewBox="0 0 130 30" 
+	style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" 
+	xml:space="preserve"
+	xmlns="http://www.w3.org/2000/svg" 
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	>
+	<defs>
+		<linearGradient id="Gradient1">
+			<stop offset="0%" stop-color="#333333" stop-opacity="100"/>
+			<stop offset="100%" stop-color="#333333" stop-opacity="100"/>
+		</linearGradient>
+		<style type="text/css">
+			<![CDATA[
+				.fil1 {fill:#FEFEFE}
+				.fil0 {fill:#01A1EE}
+				#rect1 { fill: url(#Gradient1); }
+				#onversion {
+					fill: #0E7FC0;
+				}
+				#ontext {
+					font-weight: bold;
+					fill: #fff;
+					font-size: 13px;
+					font-family: monospace;
+					font-weight: normal;
+					letter-spacing: 0.1em;
+					text-shadow: 
+						0 0 1px white,
+						-1px 0 3px black,
+						0 -1px 3px black;
+				}
+			]]>
+		</style>
+	</defs>
+	<g id="Win10">
+		<rect id="rect1" x="0" y="0" rx="3" ry="3" width="130" height="30"/>
+		<circle class="fil0" cx="15" cy="15" r="13"/>
+		<path class="fil1" d="M6,14l0,-6 8,-1 0,7z" />
+		<path class="fil1" d="M15,14l0,-7 8,-1 0,8z" />
+		<path class="fil1" d="M6,15l8,0 0,8 -8,-1z" />
+		<path class="fil1" d="M15,15l8,0 0,9 -8,-1z" />
+		<rect id="onversion" x="103" y="0" rx="3" ry="3" width="27" height="30"/>
+		<text x="35" y="18" id="ontext">
+			Windows 10
+		</text>
+	</g>
+</svg>

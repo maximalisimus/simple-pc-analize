@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg 
+	width="122" 
+	height="30" 
+	viewBox="0 0 122 30" 
+	style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" 
+	xml:space="preserve"
+	xmlns="http://www.w3.org/2000/svg" 
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	>
+	<defs>
+		<linearGradient id="Gradient1">
+			<stop offset="0%" stop-color="#333333" stop-opacity="100"/>
+			<stop offset="100%" stop-color="#333333" stop-opacity="100"/>
+		</linearGradient>
+		<style type="text/css">
+			<![CDATA[
+				.fil1 {fill:#FF5722}
+				.fil2 {fill:#7CB342}
+				.fil3 {fill:#03A9F4}
+				.fil4 {fill:#FFC107}
+				#rect1 { fill: url(#Gradient1); }
+				#onversion {
+					fill: #0E7FC0;
+				}
+				#ontext {
+					font-weight: bold;
+					fill: #fff;
+					font-size: 13px;
+					font-family: monospace;
+					font-weight: normal;
+					letter-spacing: 0.1em;
+					text-shadow: 
+						0 0 1px white,
+						-1px 0 3px black,
+						0 -1px 3px black;
+				}
+			]]>
+		</style>
+	</defs>
+	<g id="Win7">
+		<rect id="rect1" x="0" y="0" rx="3" ry="3" width="122" height="30"/>
+		<path class="fil1" d="M5,13l2,-8s5,-3 8,0l-2,8s-3,-3 -8,0z" />
+		<path class="fil2" d="M15,13l2,-8s5,3 8,0l-2,8s-3,3 -8,0z" />
+		<path class="fil3" d="M3,23l2,-8s5,-3 8,0l-2,8s-3,-3 -8,0z" />
+		<path class="fil4" d="M13,23l2,-8s5,3 8,0l-2,8s-3,3 -8,0z" />
+		<rect id="onversion" x="103" y="0" rx="3" ry="3" width="19" height="30"/>
+		<text x="35" y="18" id="ontext">
+			Windows 7
+		</text>
+	</g>
+</svg>
