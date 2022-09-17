@@ -103,7 +103,22 @@
 
 <img src="image/scr-5.png" width="738px">
 
-**smartmontools** - 
+**smartmontools** - это полноценная утилита **S.M.A.R.T. Monitoring Tools Files**. Скачать можно, также с [Sourceforge.net](https://sourceforge.net/projects/smartmontools/files/smartmontools/).
+
+На данный момент актуальной является версия **7.3**.
+Её также как и *UltraDefrag* необходимо скачать, но в этот раз **Setup** файл, например, [Вот этот](https://sourceforge.net/projects/smartmontools/files/smartmontools/7.3/smartmontools-7.3-1.win32-setup.exe/download).
+
+В **src** необходимо создать директорию **smartmontools**.
+
+Теперь откройте скачанный **setup** файл с помощью **7z** архиавтора и распакуйте все файлы в созданную директорию **smartmontools**.
+
+Должно получиться как на скриншоте ниже.
+
+<img src="image/scr-6.png" width="738px">
+
+Повтор скриншота с итоговым видом всех необходимых файлов и папок.
+
+<img src="image/scr-1.png" width="738px">
 
 ---
 
