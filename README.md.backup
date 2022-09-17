@@ -2,13 +2,13 @@
 
 ---
 
-<img src="image/apps.png" />
+![Application](./image/apps.png "Simple PC Analize")
 
 Консольная программа для сбора информации о компьютере и записи ее в файл журнала.
 
 Программа предназначена только для **ОС Windows**. Для реализации использован **Python** версии **3.8.9 и старше**.
 
-<img src="image/win-7-icon.svg" /> <img src="image/win-10-icon.svg" /> <img src="image/python-3.8.9-icon.svg" />
+![Windows-7](./image/win-7-icon.svg "Windows 7") ![Windows-10](./image/win-10-icon.svg "Windows 10") ![Python-3.8.9](./image/python-3.8.9-icon.svg "Python 3.8.9")
 
 <a name="Oglavlenie"></a>
 
@@ -60,7 +60,7 @@
 
 **ping-list.txt** - то же самое касательно пингов различных веб адресов. Пинги можно отключить соответствующим ключом, или просто оставить в файле буквально 1...2 строчки. Однако, файл обязательно должен присутствовать.
 
-<img src="image/BorlandCpp.png" height="32"> <img src="image/printers_icon.ico" height="32"> **ListPrinters** - отдельная программа написанная на **C++Buileder**-ре <img src="image/cpp-builder-icon.svg">.
+<img src="image/BorlandCpp.png" height="32"> <img src="image/printers_icon.ico" height="32"> **ListPrinters** - отдельная программа написанная на **C++Buileder**-ре  ![C++Buileder](./image/cpp-builder-icon.svg "C++Buileder").
  
  Компилировать её не нужно. Написана мною. Просто скачайте последнюю [Relese версию](https://github.com/maximalisimus/ListPrinters/releases/download/v1.0.0.0/ListPrinters-win-x86.exe) в папку **src**. Не нужно создавать никаких директорий. Данный *exe* является архивом, который упакован *7z* как *sfx* архив. Внутри уже имеются все необходимые файлы и папки для работы программы. 
  
@@ -68,7 +68,7 @@
  
  <img src="image/scr-3.png" width="738px">
  
- <img src="image/BorlandCpp.png" height="32"> <img src="image/icmp-icon.ico" height="32"> **FastPing** - также отдельная программа написанная на **C++Buileder**-ре <img src="image/cpp-builder-icon.svg">.
+ <img src="image/BorlandCpp.png" height="32"> <img src="image/icmp-icon.ico" height="32"> **FastPing** - также отдельная программа написанная на **C++Buileder**-ре  ![C++Buileder](./image/cpp-builder-icon.svg "C++Buileder").
 
  Компилировать её не нужно. Написана тоже мною. Просто скачайте последнюю [Relese версию](https://github.com/maximalisimus/FastPing/releases/download/v1.0.0.0/FastPing-win-x86.exe) в папку **src**. Не нужно создавать никаких директорий. Данный *exe* является архивом, который упакован *7z* как *sfx* архив. Внутри уже имеются все необходимые файлы и папки для работы программы. 
  
@@ -116,7 +116,7 @@
 
 <img src="image/scr-6.png" width="738px">
 
-Повторю скриншот с итоговым видом всех необходимых файлов и папок.
+Повтор скриншота с итоговым видом всех необходимых файлов и папок.
 
 <img src="image/scr-1.png" width="738px">
 
