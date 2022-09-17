@@ -1,11 +1,3 @@
------
-25.08.2022 - 13:00
-simplepca 2.0.0: Fixed errors in the request and display of information. 
-	The method of sending ICMP requests and getting a list of printers 
-	has been changed to system functions for working with the API. 
-	Added new arguments for ICMP packets. 
-	Added new information about processors, video cards, RAM and network adapters, sound devices, usb controllers.
------
 19.08.2022 - 21:00
 simplepca 1.0.0: A basic package that searches for information about this PC and writes 
 		it to a log file.
