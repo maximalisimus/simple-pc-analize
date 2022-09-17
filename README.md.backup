@@ -17,7 +17,8 @@
 1. [Введение](#Intro)
 2. [Зависимости](#Dependencies)
 3. [Компиляция](#Compilation)
-4. [Обо мне](#About)
+4. [Использование](#Uses)
+5. [Обо мне](#About)
 
 ## <a name="Intro">Введение</a>
 
@@ -38,6 +39,40 @@
 [К оглавлению](#Oglavlenie)
 
 ## <a name="Dependencies">Зависимости</a>
+
+В программе автоматически определяется архитекутура **ОС**.
+
+Внутри директории **src** программы обязательно должны присутствовать следующие папки и файлы. Без них программа работать не будет.
+
+* ListPrinters ([Git ссылка](https://github.com/maximalisimus/ListPrinters.git))
+* FastPing ([Git ссылка](https://github.com/maximalisimus/FastPing.git))
+* udefrag-x64 ([Sourceforge.net](https://sourceforge.net/projects/ultradefrag/files/stable-release/))
+* udefrag-x86 ([Sourceforge.net](https://sourceforge.net/projects/ultradefrag/files/stable-release/))
+* smartmontools ([Sourceforge.net](https://sourceforge.net/projects/smartmontools/files/smartmontools/))
+* ping-list.txt
+* structure.txt
+
+А теперь о каждом пункте отдельно. Начнем с конца.
+
+**structure.txt** - Вы можете не использовать структурирование файлов журнала по структуре организации, но файл в папке с программой обязательно должен присутствовать. 
+
+**ping-list.txt** - то же самое касательно пингов различных веб адресов. Пинги можно отключить соответствующим ключом, или просто оставить в файле буквально 1...2 строчки. Однако, файл обязательно должен присутствовать.
+
+<img src="image/BorlandCpp.png" width="100"><img src="image/printers_icon.ico"> **ListPrinters** - отдельная программа написанная на **C++Buileder**-ре <img src="image/cpp-builder-icon.svg">.
+
+---
+
+[К оглавлению](#Oglavlenie)
+
+## <a name="Compilation">Компиляция</a>
+
+
+
+---
+
+[К оглавлению](#Oglavlenie)
+
+## <a name="Uses">Использование</a>
 
 
 
