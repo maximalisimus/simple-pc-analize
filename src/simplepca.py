@@ -52,7 +52,7 @@ $ pyinstaller main.py
 # --paths — возможность вручную прописать путь к необходимым файлам, если pyinstaller
 # не может их найти(например: --paths D:\python35\Lib\site-packages\PyQt5\Qt\bin)
 
-$ pyinstaller --onefile --icon=image/apps.ico --paths src/version.py src/simplepca.py
+$ pyinstaller --onefile --icon=apps.ico --paths version.py simplepca.py
 
 '''
 
@@ -357,7 +357,7 @@ def main():
 			print('Analysis of disks defragmentation ...')
 		on_program = SplitPath(programs_dir[2], cmds[3])
 		for disks in local_disk:
-			print(f"\tAnalysis disk" + f" {disks}\ ...")
+			print(f"\tAnalysis disk {disks}\ ...")
 			on_run = on_program + ' ' + disks
 			sys.stdout.flush()
 			p.stdin.write(on_run + "\n")
@@ -369,7 +369,7 @@ def main():
 			print('Analysis of S.M.A.R.T. information about disks in the system.')
 		on_program = SplitPath(programs_dir[3], cmds[4])
 		for disks in local_disk:
-			print((f"\tAnalysis disk" + f" {disks}\ ...")
+			print(f"\tAnalysis disk {disks}\ ...")
 			on_run = on_program + ' ' + disks
 			sys.stdout.flush()
 			p.stdin.write(on_run + "\n")

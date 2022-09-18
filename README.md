@@ -64,7 +64,7 @@
  
  Поэтому просто запустите его внутри **src** папки и распакуйте.
  
- <img src="image/scr-3.png" width="738px">
+ <img src="image/scr-3.png" width="821px">
  
  <img src="image/BorlandCpp.png" height="32"> <img src="image/icmp-icon.ico" height="32"> **FastPing** - также отдельная программа написанная на **C++Buileder**-ре  ![C++Buileder](./image/cpp-builder-icon.svg "C++Buileder").
 
@@ -72,7 +72,7 @@
  
  Поэтому просто запустите его внутри **src** папки и распакуйте.
 
-<img src="image/scr-2.png" width="738px">
+<img src="image/scr-4.png" width="821px">
 
 **udefrag-x64** и **udefrag-x86** являются частью утилиты **UltraDefrag Files**.  Эту портативную версию утилиты в зависимости от архитектуры можно скачать с сайта *SorceForge.Net*. Однако, вся утилита не нужна. 
 
@@ -97,9 +97,7 @@
 
 Папка **reports** создаётся автоматически в процессе работы.
 
-<img src="image/scr-4.png" width="738px">
 
-<img src="image/scr-5.png" width="738px">
 
 **smartmontools** - это полноценная утилита **S.M.A.R.T. Monitoring Tools Files**. Скачать можно, также с [Sourceforge.net](https://sourceforge.net/projects/smartmontools/files/smartmontools/).
 
@@ -112,11 +110,11 @@
 
 Должно получиться как на скриншоте ниже.
 
-<img src="image/scr-6.png" width="738px">
+
 
 Скриншота с итоговым видом всех необходимых файлов и папок.
 
-<img src="image/scr-1.png" width="738px">
+
 
 Для работы программы обязательно необходимы следующие **PIP** модули:
 
