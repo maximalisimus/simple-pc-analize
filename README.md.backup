@@ -242,9 +242,10 @@ cmd.exe
 
 В этом случае у вас просто будет несколько *bat* файлов.
 
-Параметры и ключи.
+Параметры и ключи. Русифицикация.
 
 ```
+> simplepca.exe -h
 usage: simplepca.exe [-h] [-v] [-nh] [-nd] [-np] [-pn] [-nf] [-ns]
                      [-pf PINGFILE] [-nc]
                      {edit} ...
@@ -271,6 +272,7 @@ optional arguments:
   {edit}					команды
     edit					Изменение расположения журналов.
  
+ > simplepca.exe edit -h
  
  usage: simplepca.exe edit [-h] [-ndf] [-nq]
                           [-move {Accounting,Director,Cadre,Office,Department,Else}]
@@ -283,7 +285,7 @@ optional arguments:
 					Выберите кабинет или отдел.
 ```
 
-
+Если просто запустить утилиту без параметров и ключей - то вся заданная диагностика будет записана в файл журнала. Ключи и параметры призваны отключать какую-либо диагностику и / или изменять структуру папки журналов.
 
 ---
 
