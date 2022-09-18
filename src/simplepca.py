@@ -12,7 +12,7 @@ maximalis171091@yandex.ru
 __author__ = 'Mikhail Artamonov'
 
 try:
-	from .version import version, progname
+	from version import version, progname
 except ImportError:
 	version = "1.0.0"
 	progname = 'simplepca.exe'
