@@ -14,17 +14,18 @@ __author__ = 'Mikhail Artamonov'
 try:
 	from .version import version, progname
 except ImportError:
-	version = "2.0.0"
+	version = "2.1.0"
 	progname = 'simplepca.exe'
 
 __version__ = version
+
+# pyinstaller pywin32 pywin32-ctypes colorama icmplib
 
 import os
 import platform
 import pathlib
 import sys
 import argparse
-import subprocess
 from datetime import datetime
 import shutil
 from enum import Enum
@@ -75,9 +76,11 @@ else:
 	programs_dir = ('udefrag-x86/',
 				'smartmontools/bin')
 
-cmds = ('chcp 1252',
-		'udefrag.exe -a -v', 
-		'smartctl -s on -a')
+cmds = ('udefrag.exe', 
+		'smartctl.exe')
+
+param_cmds = ('-a -v',
+			'-s on -a')
 
 file_hosts = str(os.environ.get('SYSTEMDRIVE')) + '\Windows\System32\drivers\etc\hosts'
 
@@ -515,6 +518,7 @@ def main():
 	global programs_dir
 	global cmds
 	global default_out_color
+	global param_cmds
 	
 	init()
 	
@@ -544,12 +548,16 @@ def main():
 	
 	isallinfo = args.nodefrag + args.nosmart + args.noprinters + args.noping
 	
-	p = ''
+	prog_defrag = ''
+	prog_smart = ''
+	comm_defrag = ''
+	comm_smart = ''
+	
 	if isqueryinfo > 0:
-		p = subprocess.Popen('cmd.exe', stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, text=True)
-		
-		sys.stdout.flush()
-		p.stdin.write(cmds[0] + "\n")
+		prog_defrag = pathlib.Path(programs_dir[0] + cmds[0]).resolve()
+		prog_smart = pathlib.Path(programs_dir[1] + cmds[1]).resolve()
+		comm_defrag = str(prog_defrag) + ' ' + param_cmds[0]
+		comm_smart = str(prog_smart) + ' ' + param_cmds[1]
 	
 	if isallinfo > 0:
 		if default_out_color:
@@ -574,48 +582,49 @@ def main():
 			print('Loading the address ping function.')
 		full_ping = tuple(map(lambda x: FastOnePing(x, args.oncount, args.oninterval, args.onsize, args.ontimeout, args.srcaddr), ping_list))
 	
+	res_defrag = ''
+		
 	if args.nodefrag:
 		if default_out_color:
 			print(Fore.MAGENTA + 'Analysis of disks defragmentation ...' + Fore.RESET)
 		else:
 			print('Analysis of disks defragmentation ...')
-		on_program = SplitPath(programs_dir[0], cmds[1])
 		for disks in local_disk:
 			print(f"\tAnalysis disk {disks}\ ...")
-			on_run = on_program + ' ' + disks
-			sys.stdout.flush()
-			p.stdin.write(on_run + "\n")
+			on_run = comm_defrag + ' ' + disks
+			with os.popen(on_run, 'r') as defarg:
+				res_defrag += f"Udefrag analysis disk {disks}\ ...\n\n"
+				res_defrag += defarg.read()
+	
+	res_smart = ''
 	
 	if args.nosmart:
 		if default_out_color:
 			print(Fore.MAGENTA + 'Analysis of S.M.A.R.T. information about disks in the system.' + Fore.RESET)
 		else:
 			print('Analysis of S.M.A.R.T. information about disks in the system.')
-		on_program = SplitPath(programs_dir[1], cmds[2])
 		for disks in local_disk:
 			print(f"\tAnalysis disk {disks}\ ...")
-			on_run = on_program + ' ' + disks
-			sys.stdout.flush()
-			p.stdin.write(on_run + "\n")
-	
-	if isqueryinfo > 0:
-		# Close the 'stdin' process correctly
-		p.stdin.close()
+			on_run = comm_smart + ' ' + disks
+			with os.popen(on_run, 'r') as smart:
+				res_smart += f"SMART analysis disk {disks}\ ...\n\n"
+				res_smart += smart.read()
 	
 	# Free up some memory
 	del local_disk
 	del programs_dir
 	del cmds
+	del param_cmds
 	
 	out_data = ''
 	if isqueryinfo > 0:
 		if args.nodefrag:
 			# Delete a lot of 'analysis' lines:' from udefrag output
-			data = p.stdout.read().split('\n')
+			data = res_defrag.split('\n')
 			out_data = '\n'.join([x.strip() for x in data if not 'analysis:' in x]).strip()
 			del data
 		else:
-			out_data = p.stdout.read()
+			out_data = res_defrag.strip()
 	
 	if isallinfo > 0:
 		if default_out_color:
@@ -625,14 +634,17 @@ def main():
 	
 	# write output data
 	with open(logfile, 'a') as logfile:
-		logfile.write(out_data)
+		logfile.write(out_data.strip())
+		logfile.write('\n\n')
+		logfile.write(res_smart.strip())
+		logfile.write('\n')
 		if args.noprinters:
 			logfile.write('\n\nList of printers:\n')
 			for item in lst_printers:
 				logfile.write('\t'+ item + '\n')
 			logfile.write('\n')
 		if args.noping:
-			logfile.write('\n\nList of pings:\n')
+			logfile.write('\n\nList of pings:\n\n')
 			if default_out_color:
 				print(Fore.YELLOW + '\nPing of lists:' + Fore.RESET)
 			else:
@@ -646,11 +658,6 @@ def main():
 				for x in full_ping[y]:
 					logfile.write(x + '\n')
 				logfile.write('\n')
-	
-	if isqueryinfo > 0:
-		# Close the 'Popen' process correctly
-		p.terminate()
-		p.kill()
 	
 	if default_out_color:
 		print(Fore.GREEN + '\nThe system analysis has been successfully completed !' + Fore.RESET)

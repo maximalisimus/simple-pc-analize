@@ -1,4 +1,8 @@
 -----
+12.10.2022 - 13:00
+simplepca 2.1.0:
+* Fixed a long time getting information about the level of disk fragmentation and a long time getting information about SMART disks.
+-----
 25.08.2022 - 13:00
 simplepca 2.0.0: 
 * Fixed errors in the request and display of information.
