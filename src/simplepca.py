@@ -14,7 +14,7 @@ __author__ = 'Mikhail Artamonov'
 try:
 	from .version import version, progname
 except ImportError:
-	version = "2.1.0"
+	version = "2.2.0"
 	progname = 'simplepca.exe'
 
 __version__ = version
@@ -74,7 +74,7 @@ if platform.machine() == 'AMD64':
 				'smartmontools/bin64/')
 else:
 	programs_dir = ('udefrag-x86/',
-				'smartmontools/bin')
+				'smartmontools/bin/')
 
 cmds = ('udefrag.exe', 
 		'smartctl.exe')

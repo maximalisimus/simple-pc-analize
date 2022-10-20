@@ -1,4 +1,9 @@
 -----
+20.10.2022 - 14:10
+simplepca 2.2.0:
+* The error of launching the 32-bit version of the application has been fixed. 
+* Fixed the version number in the version file.py to the correct one.
+-----
 12.10.2022 - 13:00
 simplepca 2.1.0:
 * Fixed a long time getting information about the level of disk fragmentation and a long time getting information about SMART disks.
