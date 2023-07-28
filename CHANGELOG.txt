@@ -1,4 +1,8 @@
 -----
+28.07.2023 - 06:30
+simplepca 2.3.0:
+* Added new information about motherboard.
+-----
 20.10.2022 - 14:10
 simplepca 2.2.0:
 * The error of launching the 32-bit version of the application has been fixed. 

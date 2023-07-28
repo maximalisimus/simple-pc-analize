@@ -14,7 +14,7 @@ __author__ = 'Mikhail Artamonov'
 try:
 	from .version import version, progname
 except ImportError:
-	version = "2.2.0"
+	version = "2.3.0"
 	progname = 'simplepca.exe'
 
 __version__ = version
@@ -108,6 +108,13 @@ def OnWinmgmts(OnObject: str):
 	root_winmgmts = GetObject("winmgmts:root\cimv2")
 	on_root = root_winmgmts.ExecQuery("Select * from " + OnObject)
 	return on_root
+
+def GetMotherBoard():
+	on_board = OnWinmgmts('Win32_BaseBoard')
+	for x in on_board:
+		output = f"Motherboard: {str(x.Manufacturer).strip()} {str(x.Product).strip()} {str(x.Model).strip()}  {str(x.PartNumber).strip()}" + \
+				f"{str(x.Name).strip()} {str(x.SerialNumber).strip()} {str(x.Version).strip()}"
+		yield output
 
 def GetCPUType():
 	cpus = OnWinmgmts('Win32_Processor')
@@ -310,7 +317,7 @@ def GetHostData() -> str:
 	data_host = '\n'.join([x.strip() for x in host_data if not '#' in x]).strip()
 	return data_host
 
-def WriteBaseInfo(LogFile: str, ListDisks: tuple, isBasicInfo: bool = True, 
+def WriteBaseInfo(LogFile: str, ListDisks: tuple, isBasicInfo: bool = True, isMotherBoard: bool = True,
 				isCPUinfo: bool = True, isVideoCardInfo: bool = True,
 				isMemoryInfo: bool = True, isNetAdapterInfo: bool = True,
 				isHosts: bool = True, isDisks: bool = True,
@@ -318,6 +325,7 @@ def WriteBaseInfo(LogFile: str, ListDisks: tuple, isBasicInfo: bool = True,
 				isIPinfo: bool = True, isSound: bool = True, isUSB: bool = True):
 	all_users = list_users()
 	username = GetUserName()
+	motherboard = GetMotherBoard()
 	cpu_info = GetCPUType()
 	video_info = GetVideoControllerInfo()
 	on_memory = GetMemory()
@@ -329,7 +337,7 @@ def WriteBaseInfo(LogFile: str, ListDisks: tuple, isBasicInfo: bool = True,
 		
 	global default_out_color
 	
-	iswritebase = isBasicInfo + isCPUinfo + isVideoCardInfo + isMemoryInfo + isNetAdapterInfo + \
+	iswritebase = isBasicInfo + isMotherBoard + isCPUinfo + isVideoCardInfo + isMemoryInfo + isNetAdapterInfo + \
 				isHosts + isDisks + isUserInfo + isNetName + isIPinfo + isSound + isUSB
 	if iswritebase > 0:
 		if default_out_color:
@@ -371,6 +379,14 @@ def WriteBaseInfo(LogFile: str, ListDisks: tuple, isBasicInfo: bool = True,
 				print('\tWriting Local IP info.')
 			f.write(f"IP Info:\n")
 			for i in myip:
+				f.write(f"\t{i}\n")
+		if isMotherBoard:
+			if default_out_color:
+				print(Fore.CYAN + '\tWriting Motherboard info.' + Fore.RESET)
+			else:
+				print('\tWriting Motherboard info.')
+			f.write(f"MotherBoard Info:\n")
+			for i in motherboard:
 				f.write(f"\t{i}\n")
 		if isCPUinfo:
 			if default_out_color:
@@ -447,24 +463,47 @@ def WriteBaseInfo(LogFile: str, ListDisks: tuple, isBasicInfo: bool = True,
 			del total, used, free
 
 class Arguments:
+	''' Class «Arguments».
+	
+		Info: A class designed to store command-line values 
+				by entering parameters through the «Argparse» module.
+		
+		Variables: All parameters are entered using the «createParser()» 
+					method.
+		
+		Methods: 
+			__getattr__(self, attrname):
+				Access to a non-existent variable.
+				Used when trying to get a parameter that does not exist. 
+				In this case, «None» is returned to the user, instead 
+				of an error.
+			
+			__str__(self):
+				For STR Function output paramters.
+			
+			__repr__(self):
+				For Debug Function output paramters.
+	'''
+	
+	__slots__ = ['__dict__']
 	
 	def __getattr__(self, attrname):
+		''' Access to a non-existent variable. '''
 		return None
+
+	def __str__(self):
+		''' For STR Function output paramters. '''
+		except_list = ['']
+		#return '\t' + '\n\t'.join(tuple(map(lambda x: f"{x}: {getattr(self, x)}" if not x in except_list else f"", tuple(filter( lambda x: '__' not in x, dir(self))))))
+		return '\t' + '\n\t'.join(f"{x}: {getattr(self, x)}" for x in dir(self) if not x in except_list and '__' not in x)
 	
 	def __repr__(self):
-		return f"{self.__class__}: (\n" + \
-				f"\tnocolorout: {self.nocolorout},\n" + \
-				f"\tnoping: {self.noping},\n\tnoprinters: {self.noprinters},\n\tnodefrag: {self.nodefrag},\n\tnosmart: {self.nosmart},\n" + \
-				f"\tnobasicinfo: {self.nobasicinfo},\n" + \
-				f"\tnohostfile: {self.nohostfile},\n\tnodiskinfo: {self.nodiskinfo},\n\tnouserinfo: {self.nouserinfo},\n" + \
-				f"\tnonetworkname: {self.nonetworkname}\n, noipinfo: {self.noipinfo},\n" + \
-				f"\tnocpuinfo: {self.nocpuinfo},\n\tnovideoinfo: {self.novideoinfo},\n" + \
-				f"\tnomemoryinfo: {self.nomemoryinfo},\n\tnonetworkinfo: {self.nonetworkinfo},\n" + \
-				f"\tpingfile: {self.pingfile},\n" + \
-				f"\toncount: {self.oncount},\n\toninterval: {self.oninterval},\n\tonsize: {self.onsize},\n" + \
-				f"\tsrcaddr: {self.srcaddr},\n\tontimeout: {self.ontimeout},\n" + \
-				f"\tnodatayear: {self.nodatayear},\n\tnoqarter: {self.noqarter},\n" + \
-				f"\tmove: {self.move}"
+		''' For Debug Function output paramters. '''
+		except_list = ['']
+		return f"{self.__class__}:\n\t" + \
+				'\n\t'.join(f"{x}: {getattr(self, x)}" for x in dir(self) if not x in except_list and '__' not in x)
+				#'\n\t'.join(tuple(map(lambda x: f"{x}: {getattr(self, x)}" if not x in except_list else f"", tuple(filter( lambda x: '__' not in x, dir(self))))))
+
 
 def createParser():
 	global progname
@@ -486,6 +525,7 @@ def createParser():
 	group2.add_argument('-nui', '--nouserinfo', action='store_false', default=True,  help='Do not display information about system users.')
 	group2.add_argument('-nnn', '--nonetworkname', action='store_false', default=True,  help='Do not output the network name of the computer.')
 	group2.add_argument('-nii', '--noipinfo', action='store_false', default=True,  help='Do not output information about the local IP address.')
+	group2.add_argument('-noboard', '--noboard', action='store_false', default=True,  help='Do not output detailed information about the mohterboard.')
 	group2.add_argument('-nci', '--nocpuinfo', action='store_false', default=True,  help='Do not output detailed information about the processor.')
 	group2.add_argument('-nvi', '--novideoinfo', action='store_false', default=True,  help='Do not display detailed information about video cards.')
 	group2.add_argument('-nmi', '--nomemoryinfo', action='store_false', default=True,  help='Do not output detailed information about RAM.')
@@ -538,7 +578,7 @@ def main():
 	logfile = logfile.resolve()
 	MakeDirs(str(logfile.parent))
 	
-	WriteBaseInfo(logfile, local_disk, args.nobasicinfo, 
+	WriteBaseInfo(logfile, local_disk, args.nobasicinfo, args.noboard, 
 				args.nocpuinfo, args.novideoinfo, args.nomemoryinfo, 
 				args.nonetworkinfo, args.nohostfile, args.nodiskinfo,
 				args.nouserinfo, args.nonetworkname, args.noipinfo,
